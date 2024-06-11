@@ -52,10 +52,12 @@
         </div>
     {:else}
         <div class="header-links">
-            <a href="/">HOME</a>
-            <a href="/">DESTINATIONS</a>
-            <a href="/">BUCKET LIST</a>
-            <a href="/">ABOUT</a>
+            <ul>
+                <li><a href="/">HOME</a></li>
+                <li><a href="/">DESTINATIONS</a></li>
+                <li><a href="/">BUCKET LIST</a></li>
+                <li><a href="/">ABOUT</a></li>
+            </ul>
         </div>
     {/if}
 </div>
@@ -65,59 +67,83 @@
         display: flex;
         align-items: center;
         background-color: #768663;
-        height: 15vh;
+        height: 7em;
     }
 
     .mobile-logo img {
-        width: 15vh;
+        width: 10em;
     }
-
     .desktop-logo img {
-        width: 20vh;
+        width: 11em;
     }
-
-    .mobile-logo, .desktop-logo {
-        margin-left: 5vh;
+    .mobile-logo {
+        margin-left: var(--gap);
+    } 
+    .desktop-logo {
+        margin-left: calc(var(--gap) * 3.5);
     }
 
     .header-links {
         margin-left: auto;
-        margin-right: 5vh;
+    }
+    .header-links ul {
+        display: flex;
+        justify-content: space-around;
+        margin: auto;
+    }
+    .header-links li {
+        position: relative;
+        list-style: none;
+    }
+    .header-links li::after {
+        content: '';
+        position: absolute;
+        background-color: #444e39;
+        height: 2px;
+        width: 0;
+        left: 0;
+        bottom: -4px;
+        transition: all 0.5s ease;
+    }
+    .header-links a:hover {
+        color: #ffffff;
+    }
+    .header-links li:hover::after {
+        width: 100%;
+    }
+    .header-links a {
+        margin-right: calc(var(--gap) * 3.5);
+        color: #f2eddb;
+        text-decoration: none;
+        font-size: 18px;
     }
 
-    .header-links a {
-        margin-right: 5vh;
-        text-decoration: none;
-        color: rgb(250, 243, 238);
-        font-size: 18px;
-        font-family: 'NotoSansRegular';
+    .mobile-menu {
+        margin-left: auto;
+        margin-right: var(--gap);
     }
 
     .off-screen-menu {
+        padding-top: calc(var(--gap) * 2);
         background-color: #768663;
-        height: 100vh;
-        width: 100%;
-        max-width: 450px;
+        height: 100%;
+        width: 55%;
         position: fixed;
         top: 0;
         right: -450px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
         font-size: 3rem;
         transition: .3s ease;
     }
-
     .off-screen-menu.active {
         right: 0;
     }
-
+    .off-screen-menu li {
+        list-style-type: none;
+    }
     .off-screen-menu a {
         font-size: 20px;
         text-decoration: none;
-        color: rgb(250, 243, 238);
+        color: #f2eddb;
     }
 
     nav {
@@ -136,38 +162,36 @@
         cursor: pointer;
         z-index: 1;
     }
-
     .hamburger-menu span {
+        display: block;
         height: 5px;
         width: 100%;
-        background-color: white;
+        background-color: #f2eddb;
         border-radius: 25px;
         position: absolute;
         top: 50%;
         left: 50%;
-        transform: translate(-50%, -50%);
+        transform: translate(-50%);
         transition: .3s ease;
     }
-
     .hamburger-menu span:nth-child(1) {
-        top: 25%;
+    top: 10px;
     }
-
-    .hamburger-menu span:nth-child(3) {
-        top: 75%;
-    }
-
-    .hamburger-menu.active span:nth-child(1) {
-        top: 50%;
-        transform: translate(-50%, -50%) rotate(45deg);
-    }
-
     .hamburger-menu span:nth-child(2) {
+        top: 22px; 
+    }
+    .hamburger-menu span:nth-child(3) {
+        top: 34px;
+    }
+    .hamburger-menu.active span:nth-child(1) {
+        top: 22px;
+        transform: translateX(-50%) rotate(45deg);
+    }
+    .hamburger-menu.active span:nth-child(2) {
         opacity: 0;
     }
-
     .hamburger-menu.active span:nth-child(3) {
-        top: 50%;
-        transform: translate(-50%, -50%) rotate(-45deg);
+        top: 22px;
+        transform: translateX(-50%) rotate(-45deg);
     }
 </style>

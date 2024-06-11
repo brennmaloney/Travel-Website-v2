@@ -1,6 +1,12 @@
 body {
     margin: 0;
     padding: 0;
+    --gap: 24px;
+    font-family: 'NotoSansRegular';
+}
+
+a {
+    letter-spacing: 1px;
 }
 
 @font-face {

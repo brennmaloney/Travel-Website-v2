@@ -46,8 +46,8 @@
             </nav>
             <div class="off-screen-menu {show_menu ? 'active' : ''}">
                 <ul>
-                    <li><a href="/home" class={currentPath === '/home' ? 'active' : ''}>HOME</a></li>
-                    <li><a href="/destinations" class={currentPath === '/destinations' ? 'active' : ''}>DESTINATIONS</a></li>
+                    <li><a href="/" class={currentPath === '/' ? 'active' : ''}>HOME</a></li>
+                    <li><a href="/destinations" class={currentPath === '/destination' ? 'active' : ''}>DESTINATIONS</a></li>
                     <li><a href="/bucket" class={currentPath === '/bucket' ? 'active' : ''}>BUCKET LIST</a></li>
                     <li><a href="/about" class={currentPath === '/about' ? 'active' : ''}>ABOUT</a></li>
                 </ul>
@@ -56,10 +56,10 @@
     {:else}
         <div class="header-navigation">
             <ul class="nav-list">
-                <li class="nav-item"><a class="nav-link {currentPath === '/home' ? 'active' : ''}" href="/home">HOME</a></li>
-                <li class="nav-item"><a class="nav-link {currentPath === '/destinations' ? 'active' : ''}" href="/destinations">DESTINATIONS</a></li>
-                <li class="nav-item"><a class="nav-link {currentPath === '/bucket' ? 'active' : ''}" href="/bucket">BUCKET LIST</a></li>
-                <li class="nav-item"><a class="nav-link {currentPath === '/about' ? 'active' : ''}" href="/about">ABOUT</a></li>
+                <li class="nav-item"><a href="/" class="nav-link {currentPath === '/' ? 'active' : ''}">HOME</a></li>
+                <li class="nav-item"><a href="/destinations" class="nav-link {currentPath === '/destination' ? 'active' : ''}">DESTINATIONS</a></li>
+                <li class="nav-item"><a href="/bucket" class="nav-link {currentPath === '/bucket' ? 'active' : ''}">BUCKET LIST</a></li>
+                <li class="nav-item"><a href="/about" class="nav-link {currentPath === '/about' ? 'active' : ''}">ABOUT</a></li>
             </ul>
         </div>
     {/if}

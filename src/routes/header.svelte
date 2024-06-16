@@ -27,7 +27,6 @@
     }
 
     $: currentPath = $page.url.pathname;
-    console.log(currentPath)
 </script>
 
 <div class="header-section">
@@ -47,7 +46,7 @@
             </nav>
             <div class="off-screen-menu {show_menu ? 'active' : ''}">
                 <ul>
-                    <li><a href="/" class={currentPath === '/' ? 'active' : ''}>HOME</a></li>
+                    <li><a href="/home" class={currentPath === '/home' ? 'active' : ''}>HOME</a></li>
                     <li><a href="/destinations" class={currentPath === '/destinations' ? 'active' : ''}>DESTINATIONS</a></li>
                     <li><a href="/bucket" class={currentPath === '/bucket' ? 'active' : ''}>BUCKET LIST</a></li>
                     <li><a href="/about" class={currentPath === '/about' ? 'active' : ''}>ABOUT</a></li>
@@ -57,7 +56,7 @@
     {:else}
         <div class="header-navigation">
             <ul class="nav-list">
-                <li class="nav-item"><a class="nav-link {currentPath === '/' ? 'active' : ''}" href="/">HOME</a></li>
+                <li class="nav-item"><a class="nav-link {currentPath === '/home' ? 'active' : ''}" href="/home">HOME</a></li>
                 <li class="nav-item"><a class="nav-link {currentPath === '/destinations' ? 'active' : ''}" href="/destinations">DESTINATIONS</a></li>
                 <li class="nav-item"><a class="nav-link {currentPath === '/bucket' ? 'active' : ''}" href="/bucket">BUCKET LIST</a></li>
                 <li class="nav-item"><a class="nav-link {currentPath === '/about' ? 'active' : ''}" href="/about">ABOUT</a></li>
@@ -67,25 +66,16 @@
 </div>
 
 <style>
-    *,
-    *::before,
-    *::after {
-        padding: 0;
-        margin: 0;
-        box-sizing: border-box;
-    }
-
     .header-section {
         display: flex;
         align-items: center;
-        background-color: #768663;
+        background-image: linear-gradient(#444e39, #768663, #9eaa90);
         height: 7em;
+        border-radius: 0 0 60% 60% / 0 0 15% 15%;
     }
 
-    .mobile-logo img {
-        width: 10em;
-    }
-    .desktop-logo img {
+    .mobile-logo img,
+    .desktop-logo img  {
         width: 11em;
     }
     .mobile-logo {
@@ -164,7 +154,6 @@
     nav {
         padding: 1rem;
         display: flex;
-        background-color: #768663;
     }
 
     .hamburger-menu {

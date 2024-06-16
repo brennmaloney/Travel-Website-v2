@@ -2,6 +2,7 @@
     import { onMount, onDestroy } from 'svelte';
     import '../global.css';
     import tLogo1 from '../images/logo.png';
+    import { page } from '$app/stores';
 
     let is_mobile = false;
     let show_menu = false;
@@ -24,6 +25,9 @@
     function toggleMenu() {
         show_menu = !show_menu;
     }
+
+    $: currentPath = $page.url.pathname;
+    console.log(currentPath)
 </script>
 
 <div class="header-section">
@@ -43,26 +47,34 @@
             </nav>
             <div class="off-screen-menu {show_menu ? 'active' : ''}">
                 <ul>
-                    <li><a href="/">HOME</a></li>
-                    <li><a href="/">DESTINATIONS</a></li>
-                    <li><a href="/">BUCKET LIST</a></li>
-                    <li><a href="/">ABOUT</a></li>
+                    <li><a href="/" class={currentPath === '/' ? 'active' : ''}>HOME</a></li>
+                    <li><a href="/destinations" class={currentPath === '/destinations' ? 'active' : ''}>DESTINATIONS</a></li>
+                    <li><a href="/bucket" class={currentPath === '/bucket' ? 'active' : ''}>BUCKET LIST</a></li>
+                    <li><a href="/about" class={currentPath === '/about' ? 'active' : ''}>ABOUT</a></li>
                 </ul>
             </div>
         </div>
     {:else}
-        <div class="header-links">
-            <ul>
-                <li><a href="/">HOME</a></li>
-                <li><a href="/">DESTINATIONS</a></li>
-                <li><a href="/">BUCKET LIST</a></li>
-                <li><a href="/">ABOUT</a></li>
+        <div class="header-navigation">
+            <ul class="nav-list">
+                <li class="nav-item"><a class="nav-link {currentPath === '/' ? 'active' : ''}" href="/">HOME</a></li>
+                <li class="nav-item"><a class="nav-link {currentPath === '/destinations' ? 'active' : ''}" href="/destinations">DESTINATIONS</a></li>
+                <li class="nav-item"><a class="nav-link {currentPath === '/bucket' ? 'active' : ''}" href="/bucket">BUCKET LIST</a></li>
+                <li class="nav-item"><a class="nav-link {currentPath === '/about' ? 'active' : ''}" href="/about">ABOUT</a></li>
             </ul>
         </div>
     {/if}
 </div>
 
 <style>
+    *,
+    *::before,
+    *::after {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+
     .header-section {
         display: flex;
         align-items: center;
@@ -83,39 +95,42 @@
         margin-left: calc(var(--gap) * 3.5);
     }
 
-    .header-links {
+    .header-navigation {
         margin-left: auto;
     }
-    .header-links ul {
+    .nav-list {
         display: flex;
-        justify-content: space-around;
-        margin: auto;
     }
-    .header-links li {
-        position: relative;
+    .nav-item {
         list-style: none;
-    }
-    .header-links li::after {
-        content: '';
-        position: absolute;
-        background-color: #444e39;
-        height: 2px;
-        width: 0;
-        left: 0;
-        bottom: -4px;
-        transition: all 0.5s ease;
-    }
-    .header-links a:hover {
-        color: #ffffff;
-    }
-    .header-links li:hover::after {
-        width: 100%;
-    }
-    .header-links a {
         margin-right: calc(var(--gap) * 3.5);
+    }
+    .nav-link {
         color: #f2eddb;
         text-decoration: none;
         font-size: 18px;
+    }
+    .nav-link:hover,
+    .nav-link:focus {
+        color: #fff;
+    }
+    .nav-link::after {
+        content: '';
+        height: 2px;
+        width: 100%;
+        background-color: #444e39;
+        display: block;
+        opacity: 0;
+        transition: all 0.2s;
+    }
+    .nav-link:hover::after {
+        opacity: 1;
+    }
+    .nav-link.active {
+        color: #fff;
+    }
+    .nav-link.active::after {
+        opacity: 1;
     }
 
     .mobile-menu {

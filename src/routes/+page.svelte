@@ -5,4 +5,15 @@
 
 <Header />
 
+<div class="home-section">
+    Home
+</div>
+
 <Footer />
+
+<style>
+    .home-section {
+        display: flex;
+        justify-content: center;
+    }
+</style>

@@ -4,6 +4,11 @@
 </script>
 
 
+<svelte:head>
+    <title>Backpack Travels</title>
+</svelte:head>
+
+
 <div class="page-container">
     <Header />
     <div class="content">

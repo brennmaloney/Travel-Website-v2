@@ -7,6 +7,11 @@
     let is_mobile = false;
     let show_menu = false;
 
+
+    function toggleMenu() {
+        show_menu = !show_menu;
+    }
+
     if (typeof window !== 'undefined') {
         onMount(() => {
             is_mobile = window.innerWidth <= 767;
@@ -20,11 +25,14 @@
         onDestroy(() => {
             window.removeEventListener('resize', handleResize);
         });
+
+        window.addEventListener('click', function(e) {
+            if (show_menu && !document.getElementById('mobile-menu').contains(e.target)) {
+                toggleMenu();
+            }
+        });
     }
 
-    function toggleMenu() {
-        show_menu = !show_menu;
-    }
 
     $: currentPath = $page.url.pathname;
 </script>
@@ -36,7 +44,7 @@
         </a>
     </div>
     {#if is_mobile}
-        <div class="mobile-menu">
+        <div class="mobile-menu" id="mobile-menu">
             <nav>
                 <button class="hamburger-menu {show_menu ? 'active' : ''}" on:click={toggleMenu}>
                     <span></span>
@@ -71,7 +79,6 @@
         align-items: center;
         background-image: linear-gradient(#444e39, #768663, #9eaa90);
         height: 7em;
-        border-radius: 0 0 60% 60% / 0 0 15% 15%;
     }
 
     .mobile-logo img,

@@ -12,9 +12,9 @@
     // if in south hemisphere add minus to latitude
     // if in eastern hemisphere add minus to longitude
     const coordinates = {
-        "Toronto->Vancouver" : [ [43.6548, 79.3883], [49.2827, 123.1207] ],
-        "Toronto->NewYork" : [ [43.6548, 79.3883], [40.7831, 73.9712] ],
-        "Toronto->SanFransisco" : [ [43.6548, 79.3883], [37.7749, 122.4194] ],
+        "Toronto->Vancouver" : [ [43.6771, 79.6334], [49.1934, 123.1751] ],
+        "Toronto->NewYork" : [ [43.6771, 79.6334], [40.6446, 73.7797] ],
+        "Toronto->SanFransisco" : [ [43.6771, 79.6334], [37.6193, 122.3816] ],
     }
 
     // variables 
@@ -36,6 +36,19 @@
             const z = R * Math.cos(lat) * Math.sin(lng);
             return [x, y, z];
         });
+    }
+    function getCurve(p1, p2) {
+        let v1 = new THREE.Vector3(p1[0], p1[1], p1[2]);
+        let v2 = new THREE.Vector3(p2[0], p2[1], p2[2]);
+        let points = [];
+        for (let i = 0; i <= 20; ++i) {
+            let p = new THREE.Vector3().lerpVectors(v1, v2, i/20);
+            console.log(p)
+            p.normalize();
+            p.multiplyScalar(10 + 0.4*Math.sin(Math.PI*i/20));
+            points.push(p);
+        }
+        return points;
     }
     // --------------------------------------
 
@@ -136,24 +149,29 @@
         object.add(atmosphere);
 
         Object.values(coordinates).forEach(route => {
+            // get x,y,z for creating a pin on the globe
             let cartesian = convertToCartesian(route);
-            let mesh1 = new THREE.Mesh(
-                new THREE.SphereGeometry(0.2, 20, 20),
+            let startPin = new THREE.Mesh(
+                new THREE.SphereGeometry(0.175, 20, 20),
                 new THREE.MeshBasicMaterial({color: 0x0000ff})
             );
-            let mesh2 = new THREE.Mesh(
-                new THREE.SphereGeometry(0.2, 20, 20),
+            let destPin = new THREE.Mesh(
+                new THREE.SphereGeometry(0.175, 20, 20),
                 new THREE.MeshBasicMaterial({color: 0x00ff00})
             );
-            console.log(cartesian)
-            mesh1.position.set(cartesian[0][0], cartesian[0][1], cartesian[0][2])
-            mesh2.position.set(cartesian[1][0], cartesian[1][1], cartesian[1][2])
-            object.add(mesh1);
-            object.add(mesh2);
+            startPin.position.set(cartesian[0][0], cartesian[0][1], cartesian[0][2]);
+            destPin.position.set(cartesian[1][0], cartesian[1][1], cartesian[1][2]);
+            object.add(startPin);
+            object.add(destPin);
+            let points = getCurve(cartesian[0], cartesian[1]);
+            let path = new THREE.CatmullRomCurve3(points);
+            const geometry = new THREE.TubeGeometry(path, 20, 0.03, 8, false);
+            const material = new THREE.MeshBasicMaterial({color: 0xff0000});
+            const mesh = new THREE.Mesh(geometry, material);
+            object.add(mesh);
         });
 
         scene.add(object);
-
         camera.position.z = 30;
 
         // animate the scene

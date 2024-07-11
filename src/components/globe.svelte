@@ -170,21 +170,18 @@
             // get x,y,z for creating a pin on the globe
             let cartesian = convertToCartesian(route);
             // create pins
-            let startPin = createPin(0x85929E);
+            let startPin = createPin(0x000000);
             let destPin = createPin(0xE74C3C);
-            console.log(startPin)
             // position the pins relative to the globe
             startPin.position.set(cartesian[0][0], cartesian[0][1], cartesian[0][2]);
             destPin.position.set(cartesian[1][0], cartesian[1][1], cartesian[1][2]);
             startPin.lookAt(scene.position);
             destPin.lookAt(scene.position);
-            // startPin.translateZ(-1);
-            // destPin.translateZ(-1);
             // create path between startPin and destPin
             let points = getCurve(cartesian[0], cartesian[1]);
             let path = new THREE.CatmullRomCurve3(points);
             const geometry = new THREE.TubeGeometry(path, 20, 0.015, 8, false);
-            const material = new THREE.MeshBasicMaterial({color: 0xffffff});
+            const material = new THREE.MeshBasicMaterial({color: 0xFFFFFF});
             const mesh = new THREE.Mesh(geometry, material);
             // add to globe
             object.add(startPin);

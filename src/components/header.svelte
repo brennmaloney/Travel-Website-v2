@@ -54,10 +54,10 @@
             </nav>
             <div class="off-screen-menu {show_menu ? 'active' : ''}">
                 <ul>
-                    <li><a href="/" class={currentPath === '/' ? 'active' : ''}>HOME</a></li>
-                    <li><a href="/destinations" class={currentPath === '/destination' ? 'active' : ''}>DESTINATIONS</a></li>
-                    <li><a href="/bucket" class={currentPath === '/bucket' ? 'active' : ''}>BUCKET LIST</a></li>
-                    <li><a href="/about" class={currentPath === '/about' ? 'active' : ''}>ABOUT</a></li>
+                    <li on:click={toggleMenu}><a href="/" class={currentPath === '/' ? 'active' : ''}>HOME</a></li>
+                    <li on:click={toggleMenu}><a href="/destinations" class={currentPath === '/destination' ? 'active' : ''}>DESTINATIONS</a></li>
+                    <li on:click={toggleMenu}><a href="/bucket" class={currentPath === '/bucket' ? 'active' : ''}>BUCKET LIST</a></li>
+                    <li on:click={toggleMenu}><a href="/about" class={currentPath === '/about' ? 'active' : ''}>ABOUT</a></li>
                 </ul>
             </div>
         </div>

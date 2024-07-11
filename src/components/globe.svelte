@@ -123,6 +123,7 @@
     // -------------------------------------------
 
     onMount(() => {
+        let is_mobile = window.innerWidth <= 767;
         // create a scene and camera for globe
         const scene = new THREE.Scene();
         const camera = new THREE.PerspectiveCamera(75, canvas.clientWidth / canvas.clientHeight, 0.1, 1000);
@@ -190,7 +191,7 @@
         });
 
         scene.add(object);
-        camera.position.z = 20;
+        camera.position.z = is_mobile ? 20 : 20;
 
         // animate the scene
         function animate() {
@@ -229,5 +230,10 @@
         display: block;
         width: 100%;
         height: 100%;
+    }
+    @media (max-width: 767px) {
+        canvas {
+            height: 400px;
+        }
     }
 </style>

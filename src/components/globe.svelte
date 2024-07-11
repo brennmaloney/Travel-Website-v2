@@ -43,12 +43,29 @@
         let points = [];
         for (let i = 0; i <= 20; ++i) {
             let p = new THREE.Vector3().lerpVectors(v1, v2, i/20);
-            console.log(p)
             p.normalize();
             p.multiplyScalar(10 + 0.4*Math.sin(Math.PI*i/20));
             points.push(p);
         }
         return points;
+    }
+    function createPin(color) {
+        //create group for sphere and cylinder
+        const pinGroup = new THREE.Group();
+        // create top of pin
+        const ballGeometry = new THREE.SphereGeometry(0.15, 20, 20);
+        const ballMaterial = new THREE.MeshBasicMaterial({color: color});
+        const ball = new THREE.Mesh(ballGeometry, ballMaterial);
+        // create pointy part of pin
+        const cylinderGeometry = new THREE.CylinderGeometry(0.04, 0.04, 0.7, 20);
+        const cylinderMaterial = new THREE.MeshBasicMaterial({color: 0xD0D3D4});
+        const cylinder = new THREE.Mesh(cylinderGeometry, cylinderMaterial);
+        // move sphere ontop of cylinder
+        ball.position.set(0, 0, -0.35);
+        cylinder.rotation.x = Math.PI / 2;
+        pinGroup.add(ball);
+        pinGroup.add(cylinder);
+        return pinGroup;
     }
     // --------------------------------------
 
@@ -151,23 +168,26 @@
         Object.values(coordinates).forEach(route => {
             // get x,y,z for creating a pin on the globe
             let cartesian = convertToCartesian(route);
-            let startPin = new THREE.Mesh(
-                new THREE.SphereGeometry(0.175, 20, 20),
-                new THREE.MeshBasicMaterial({color: 0x0000ff})
-            );
-            let destPin = new THREE.Mesh(
-                new THREE.SphereGeometry(0.175, 20, 20),
-                new THREE.MeshBasicMaterial({color: 0x00ff00})
-            );
+            // create pins
+            let startPin = createPin(0x85929E);
+            let destPin = createPin(0xE74C3C);
+            console.log(startPin)
+            // position the pins relative to the globe
             startPin.position.set(cartesian[0][0], cartesian[0][1], cartesian[0][2]);
             destPin.position.set(cartesian[1][0], cartesian[1][1], cartesian[1][2]);
-            object.add(startPin);
-            object.add(destPin);
+            startPin.lookAt(scene.position);
+            destPin.lookAt(scene.position);
+            // startPin.translateZ(-1);
+            // destPin.translateZ(-1);
+            // create path between startPin and destPin
             let points = getCurve(cartesian[0], cartesian[1]);
             let path = new THREE.CatmullRomCurve3(points);
-            const geometry = new THREE.TubeGeometry(path, 20, 0.03, 8, false);
-            const material = new THREE.MeshBasicMaterial({color: 0xff0000});
+            const geometry = new THREE.TubeGeometry(path, 20, 0.015, 8, false);
+            const material = new THREE.MeshBasicMaterial({color: 0xffffff});
             const mesh = new THREE.Mesh(geometry, material);
+            // add to globe
+            object.add(startPin);
+            object.add(destPin);
             object.add(mesh);
         });
 

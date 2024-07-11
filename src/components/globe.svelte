@@ -193,13 +193,13 @@
         });
 
         scene.add(object);
-        camera.position.z = 30;
+        camera.position.z = 20;
 
         // animate the scene
         function animate() {
             requestAnimationFrame(animate);
             renderer.render(scene, camera);
-            // object.rotation.y += 0.002;
+            object.rotation.y += 0.002;
             if (isDragging) {
                 const deltaX = mouse.x - previousMouse.x;
                 const deltaY = mouse.y - previousMouse.y;

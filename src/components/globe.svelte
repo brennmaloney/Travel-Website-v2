@@ -6,7 +6,7 @@
     import fragmentShader from './shaders/fragment.glsl';
     import atmosphereVertexShader from './shaders/atmosphereVertex.glsl';
     import atmosphereFragmentShader from './shaders/atmosphereFragment.glsl';
-    import globeIMG from '../images/earth_test.jpg';
+    import globeIMG from '../images/main/earth_test.jpg';
 
     // add coordinates of vacations to add points to the globe (city : [latitude, longitude])
     // if in south hemisphere add minus to latitude
@@ -15,7 +15,6 @@
         "Toronto->Vancouver" : [ [43.6771, 79.6334], [49.1934, 123.1751] ],
         "Toronto->NewYork" : [ [43.6771, 79.6334], [40.6446, 73.7797] ],
         "Toronto->SanFransisco" : [ [43.6771, 79.6334], [37.6193, 122.3816] ],
-        "Nairobi->Madrid" : [ [-1.2921, -36.8219], [40.4168, 3.7038]],
     }
 
     // variables 
@@ -98,6 +97,7 @@
     // ---------- Phone movement events ----------
     function onTouchStart(event) {
         if (event.touches.length === 1) {
+            event.preventDefault();
             isDragging = true;
             isSpinning = false;
             previousMouse.x = (event.touches[0].clientX / window.innerWidth) * 2 - 1;
@@ -108,6 +108,7 @@
     }
     function onTouchMove(event) {
         if (isDragging && event.touches.length === 1) {
+            event.preventDefault();
             const newMouseX = (event.touches[0].clientX / window.innerWidth) * 2 - 1;
             const newMouseY = -(event.touches[0].clientY / window.innerHeight) * 2 + 1;
             velocity.x = newMouseX - previousMouse.x;
@@ -197,7 +198,7 @@
         function animate() {
             requestAnimationFrame(animate);
             renderer.render(scene, camera);
-            object.rotation.y += 0.002;
+            object.rotation.y += 0.001;
             if (isDragging) {
                 const deltaX = mouse.x - previousMouse.x;
                 const deltaY = mouse.y - previousMouse.y;

@@ -1,7 +1,7 @@
 <script>
     import { onMount, onDestroy } from 'svelte';
     import '../global.css';
-    import tLogo1 from '../images/logo.png';
+    import tLogo1 from '../images/main/logo.png';
     import { page } from '$app/stores';
 
     let is_mobile = false;
@@ -54,10 +54,10 @@
             </nav>
             <div class="off-screen-menu {show_menu ? 'active' : ''}">
                 <ul>
-                    <li on:click={toggleMenu}><a href="/" class={currentPath === '/' ? 'active' : ''}>HOME</a></li>
-                    <li on:click={toggleMenu}><a href="/destinations" class={currentPath === '/destination' ? 'active' : ''}>DESTINATIONS</a></li>
-                    <li on:click={toggleMenu}><a href="/bucket" class={currentPath === '/bucket' ? 'active' : ''}>BUCKET LIST</a></li>
-                    <li on:click={toggleMenu}><a href="/about" class={currentPath === '/about' ? 'active' : ''}>ABOUT</a></li>
+                    <li><a href="/" class={currentPath === '/' ? 'active' : ''} on:click={toggleMenu}>HOME</a></li>
+                    <li><a href="/destinations" class={currentPath === '/destination' ? 'active' : ''} on:click={toggleMenu}>DESTINATIONS</a></li>
+                    <li><a href="/bucket" class={currentPath === '/bucket' ? 'active' : ''} on:click={toggleMenu}>BUCKET LIST</a></li>
+                    <li><a href="/about" class={currentPath === '/about' ? 'active' : ''} on:click={toggleMenu}>ABOUT</a></li>
                 </ul>
             </div>
         </div>

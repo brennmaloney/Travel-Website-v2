@@ -3,7 +3,7 @@
 
 
 <div class="home-section">
-    Home
+    
 </div>
 
 

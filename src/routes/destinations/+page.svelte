@@ -15,13 +15,15 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        background: url('../../images//travel/sf_beach_cruz.JPEG');
-        background-position: center 25%;
+        background: url('../../images/travel/bc_landscape_bg.jpg') no-repeat center;
+        background-size: cover;
+        background-position: center 35%;
     }
     @media (max-width: 767px) {
         .destination-section {
             height: 70vh;
-            background-position: center 47%;
+            background: url('../../images/travel/bc_portrait_bg.jpg') no-repeat center;
+            background-size: cover;
         }
     }
 </style>

@@ -3,22 +3,25 @@
 </script>
 
 
-<div class="destinations-section">
-    Destinations
-</div>
-<div class="globe-section">
-    <Globe />
+<div class="destination-section">
+    <div class="globe-section">
+        <Globe />
+    </div>
 </div>
 
 
 <style>
-    .destinations-section {
+    .destination-section {
         display: flex;
-        flex-direction: column;
-        align-items: center;
         justify-content: center;
+        align-items: center;
+        background: url('../../images//travel/sf_beach_cruz.JPEG');
+        background-position: center 25%;
     }
-    .globe-section {
-        width: 100%;
+    @media (max-width: 767px) {
+        .destination-section {
+            height: 70vh;
+            background-position: center 47%;
+        }
     }
 </style>

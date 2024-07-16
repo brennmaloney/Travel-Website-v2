@@ -220,19 +220,36 @@
     });
 </script>
 
-<canvas 
-    bind:this={canvas} 
-    on:mousemove={onMouseMove} on:mousedown={onMouseDown} on:mouseup={onMouseUp} on:mouseleave={onMouseUp}
-    on:touchstart={onTouchStart} on:touchmove={onTouchMove} on:touchend={onTouchEnd}>
-</canvas>
+<div class="globe-container">
+    <canvas 
+        bind:this={canvas} 
+        on:mousemove={onMouseMove} on:mousedown={onMouseDown} on:mouseup={onMouseUp} on:mouseleave={onMouseUp}
+        on:touchstart={onTouchStart} on:touchmove={onTouchMove} on:touchend={onTouchEnd}>
+    </canvas>
+</div>
+
 
 <style>
+    .globe-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 1000px;
+        width: 1000px;
+        overflow: hidden;
+        position: relative;
+        margin: auto;
+    }
+
     canvas {
-        display: block;
-        width: 100%;
-        height: 100%;
+        height: 90%;
+        width: 90%;
     }
     @media (max-width: 767px) {
+        .globe-container {
+            height: 400px;
+            width: 400px;
+        }
         canvas {
             height: 400px;
         }

@@ -20,52 +20,48 @@
 </div>
 
 <style>
-    .destinations-section {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding: 20px;
-    }
     .destinations-list {
         display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 20px;
-        width: 100%;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Adjust as needed */
+        gap: 20px; /* Space between items */
     }
+
     .destination {
         border: 1px solid #ddd;
         border-radius: 8px;
         overflow: hidden;
         transition: transform 0.2s;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
     }
+
     .destination:hover {
         transform: scale(1.02);
     }
+
     img {
-        width: 100%;
-        height: 200px;
-        object-fit: cover;
+        max-width: 100%;
+        height: auto;
     }
-    /* a {
+
+    a {
         text-decoration: none;
         color: inherit;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    } */
+    }
+
     h2 {
         margin: 0;
         padding: 10px;
         font-size: 1.5em;
-        text-align: center;
     }
+
     p {
         padding: 0 10px 10px;
         font-size: 1em;
-        text-align: center;
+    }
+
+    /* Media query for mobile devices */
+    @media (max-width: 767px) {
+        .destinations-list {
+            grid-template-columns: repeat(2, 1fr); /* Two columns on mobile */
+        }
     }
 </style>

@@ -133,6 +133,7 @@
     .mobile-menu {
         margin-left: auto;
         margin-right: var(--gap);
+        z-index: 1;
     }
 
     .off-screen-menu {
@@ -171,7 +172,7 @@
         background: transparent;
         border: none;
         cursor: pointer;
-        z-index: 1;
+        z-index: 2;
     }
     .hamburger-menu span {
         display: block;

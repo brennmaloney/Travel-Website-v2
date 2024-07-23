@@ -8,6 +8,6 @@ export default defineConfig({
 		vitePluginString()
 	],
 	optimizeDeps: {
-		exclude: ['gsap']
+		exclude: ['contentful']
 	}
 });

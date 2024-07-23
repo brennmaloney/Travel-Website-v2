@@ -7,13 +7,13 @@
     <div class="destinations-list">
         {#each data.blogs as blog}
             <div class="destination">
-                <a href={`/destinations/${blog.slug}`}>
+                <!-- <a href={`/destinations/${blog.slug}`}> -->
                     {#if blog.teaserImage}
                         <img src={blog.teaserImage.fields.file.url} alt={blog.teaserImage.fields.title} />
                     {/if}
                     <h2>{blog.title}</h2>
                     <p>{blog.teaserDescription}</p>
-                </a>
+                <!-- </a> -->
             </div>
         {/each}
     </div>
@@ -50,13 +50,13 @@
         height: 200px;
         object-fit: cover;
     }
-    a {
+    /* a {
         text-decoration: none;
         color: inherit;
         display: flex;
         flex-direction: column;
         align-items: center;
-    }
+    } */
     h2 {
         margin: 0;
         padding: 10px;

@@ -15,13 +15,13 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        background: url('../images/travel/bc_landscape_bg.jpg') no-repeat center;
+        background: url('../images/travel/bc/bc_landscape_bg.jpg') no-repeat center;
         background-size: cover;
     }
     @media (max-width: 767px) {
         .destination-section {
             height: 70vh;
-            background: url('../images/travel/bc_portrait_bg.jpg') no-repeat center;
+            background: url('../images/travel/bc/bc_portrait_bg.jpg') no-repeat center;
         }
     }
 </style>

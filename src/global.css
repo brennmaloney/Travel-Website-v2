@@ -4,17 +4,53 @@ body {
     height: 100%;
     min-height: 100vh;
     --gap: 24px;
-    font-family: 'NotoSansRegular';
-    letter-spacing: 1px;
+    --regular-font: 'NotoSansRegular';
+    --bold-font: 'NotoSansBold'
     background-color: #fffafa;
+}
+
+* {
+    font-family: var(--regular-font);
+    letter-spacing: 1px;
+}
+
+h1 {
+    font-family: var(--bold-font);
+    font-size: 1.7rem;
+    margin: 0;
+}
+h2 {
+    font-family: var(--bold-font);
+    font-size: 1.2rem;
+    margin: 0;
+}
+p {
+    font-size: 1rem;
+    margin: 0;
 }
 
 @font-face {
     font-family: 'NotoSansRegular';
     src: url(./fonts/NotoSans-Regular.ttf);
 }
+@font-face {
+    font-family: 'NotoSansBold';
+    src: url(./fonts/NotoSans-Bold.ttf);
+}
 
 @font-face {
     font-family: 'AssistantRegular';
     src: url(./fonts/Assistant-Regular.ttf);
+}
+
+@media (max-width: 767px) {
+    h1 {
+        font-size: 1.5rem;
+    }
+    h2 {
+        font-size: 1rem;
+    }
+    p {
+        font-size: 0.80rem;
+    }
 }

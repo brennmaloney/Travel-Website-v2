@@ -55,7 +55,7 @@
             <div class="off-screen-menu {show_menu ? 'active' : ''}">
                 <ul>
                     <li><a href="/" class={currentPath === '/' ? 'active' : ''} on:click={toggleMenu}>HOME</a></li>
-                    <li><a href="/destinations" class={currentPath === '/destination' ? 'active' : ''} on:click={toggleMenu}>DESTINATIONS</a></li>
+                    <li><a href="/destinations" class={currentPath === '/destinations' ? 'active' : ''} on:click={toggleMenu}>DESTINATIONS</a></li>
                     <li><a href="/bucket" class={currentPath === '/bucket' ? 'active' : ''} on:click={toggleMenu}>BUCKET LIST</a></li>
                     <li><a href="/about" class={currentPath === '/about' ? 'active' : ''} on:click={toggleMenu}>ABOUT</a></li>
                 </ul>
@@ -65,7 +65,7 @@
         <div class="header-navigation">
             <ul class="nav-list">
                 <li class="nav-item"><a href="/" class="nav-link {currentPath === '/' ? 'active' : ''}">HOME</a></li>
-                <li class="nav-item"><a href="/destinations" class="nav-link {currentPath === '/destination' ? 'active' : ''}">DESTINATIONS</a></li>
+                <li class="nav-item"><a href="/destinations" class="nav-link {currentPath === '/destinations' ? 'active' : ''}">DESTINATIONS</a></li>
                 <li class="nav-item"><a href="/bucket" class="nav-link {currentPath === '/bucket' ? 'active' : ''}">BUCKET LIST</a></li>
                 <li class="nav-item"><a href="/about" class="nav-link {currentPath === '/about' ? 'active' : ''}">ABOUT</a></li>
             </ul>
@@ -124,7 +124,7 @@
         opacity: 1;
     }
     .nav-link.active {
-        color: #fff;
+        color: #ffffff;
     }
     .nav-link.active::after {
         opacity: 1;
@@ -132,7 +132,7 @@
 
     .mobile-menu {
         margin-left: auto;
-        margin-right: var(--gap);
+        margin-right: calc(var(--gap) / 4);
         z-index: 1;
     }
 
@@ -149,6 +149,9 @@
     }
     .off-screen-menu.active {
         right: 0;
+    }
+    .off-screen-menu ul {
+        padding-left: var(--gap);
     }
     .off-screen-menu li {
         list-style-type: none;

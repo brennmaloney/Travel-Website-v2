@@ -4,10 +4,24 @@
     console.log(data);
 </script>
 
-<div class="destination-page">
+<div class='destination-page'>
     <h1>{data.title}</h1>
     {#if data.teaserImage}
-        <img src={data.teaserImage.fields.file.url} alt={data.teaserImage.fields.title} />
+        <img class='destination-image' src={data.teaserImage.fields.file.url} alt={data.teaserImage.fields.title} />
     {/if}
-    <div>{@html data.teaserDescription}</div>
+    <p>{data.teaserDescription}</p>
 </div>
+
+<style>
+    .destination-page {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        padding: 1rem 2rem;
+    }
+    .destination-image {
+        width: 70%;
+    }
+</style>

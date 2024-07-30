@@ -6,7 +6,7 @@ body {
     --gap: 24px;
     --regular-font: 'NotoSansRegular';
     --bold-font: 'NotoSansBold'
-    background-color: #fffafa;
+        background-color: #fffafa;
 }
 
 * {
@@ -29,6 +29,8 @@ p {
     margin: 0;
 }
 
+/* Individual Blog Pages */
+
 @font-face {
     font-family: 'NotoSansRegular';
     src: url(./fonts/NotoSans-Regular.ttf);
@@ -37,7 +39,6 @@ p {
     font-family: 'NotoSansBold';
     src: url(./fonts/NotoSans-Bold.ttf);
 }
-
 @font-face {
     font-family: 'AssistantRegular';
     src: url(./fonts/Assistant-Regular.ttf);

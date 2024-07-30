@@ -2,13 +2,11 @@
     import Globe from '../components/globe.svelte';
 </script>
 
-
 <div class="destination-section">
     <div class="globe-section">
         <Globe />
     </div>
 </div>
-
 
 <style>
     .destination-section {

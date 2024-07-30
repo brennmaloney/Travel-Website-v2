@@ -7,7 +7,6 @@
     let is_mobile = false;
     let show_menu = false;
 
-
     function toggleMenu() {
         show_menu = !show_menu;
     }
@@ -26,21 +25,20 @@
             window.removeEventListener('resize', handleResize);
         });
 
-        window.addEventListener('click', function(e) {
+        window.addEventListener('click', function (e) {
             if (show_menu && !document.getElementById('mobile-menu').contains(e.target)) {
                 toggleMenu();
             }
         });
     }
 
-
     $: currentPath = $page.url.pathname;
 </script>
 
 <div class="header-section">
-    <div class="{is_mobile ? 'mobile-logo' : 'desktop-logo'}">
+    <div class={is_mobile ? 'mobile-logo' : 'desktop-logo'}>
         <a href="/">
-            <img src={tLogo1} alt="logo">
+            <img src={tLogo1} alt="logo" />
         </a>
     </div>
     {#if is_mobile}
@@ -82,12 +80,12 @@
     }
 
     .mobile-logo img,
-    .desktop-logo img  {
+    .desktop-logo img {
         width: 11em;
     }
     .mobile-logo {
         margin-left: var(--gap);
-    } 
+    }
     .desktop-logo {
         margin-left: calc(var(--gap) * 3.5);
     }
@@ -145,7 +143,7 @@
         top: 0;
         right: -450px;
         font-size: 3rem;
-        transition: .3s ease;
+        transition: 0.3s ease;
     }
     .off-screen-menu.active {
         right: 0;
@@ -187,13 +185,13 @@
         top: 50%;
         left: 50%;
         transform: translate(-50%);
-        transition: .3s ease;
+        transition: 0.3s ease;
     }
     .hamburger-menu span:nth-child(1) {
-    top: 10px;
+        top: 10px;
     }
     .hamburger-menu span:nth-child(2) {
-        top: 22px; 
+        top: 22px;
     }
     .hamburger-menu span:nth-child(3) {
         top: 34px;

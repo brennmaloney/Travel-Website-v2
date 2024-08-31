@@ -1,12 +1,21 @@
+:root {
+    --gap: 24px;
+    --regular-font: 'NotoSansRegular';
+    --bold-font: 'NotoSansBold';
+    --dark-green: #444e39;
+    --off-white: #eae7dd;
+    --white: #ffffff;
+    --dark-grey: #202020;
+    --light-yellow: #f2e7c2;
+    --mint: #adcfb3;
+}
+
 body {
     margin: 0;
     padding: 0;
     height: 100%;
     min-height: 100vh;
-    --gap: 24px;
-    --regular-font: 'NotoSansRegular';
-    --bold-font: 'NotoSansBold'
-        background-color: #fffafa;
+    background-color: var(--off-white);
 }
 
 * {
@@ -29,8 +38,21 @@ p {
     margin: 0;
 }
 
-/* Individual Blog Pages */
+.Mobile {
+    display: none;
+}
+.Desktop {
+    display: block;
+}
 
+@media (max-width: 767px) {
+    .Mobile {
+        display: block;
+    }
+    .Desktop {
+        display: none;
+    }
+}
 @font-face {
     font-family: 'NotoSansRegular';
     src: url(./fonts/NotoSans-Regular.ttf);
@@ -54,4 +76,84 @@ p {
     p {
         font-size: 0.80rem;
     }
+}
+
+
+/* HEADER STYLES */
+/* mobile navigation */
+.mobile-menu {
+    margin-left: auto;
+    margin-right: calc(var(--gap) / 4);
+    z-index: 1;
+}
+.mobile-menu > nav {
+    padding: 1em;
+    display: flex;
+}
+.hamburger-menu {
+    height: 50px;
+    width: 50px;
+    margin-left: auto;
+    position: relative;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 2;
+}
+.hamburger-menu span {
+    display: block;
+    height: 5px;
+    width: 100%;
+    background-color: var(--off-white);
+    border-radius: 25px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%);
+    transition: 0.3s ease;
+}
+.hamburger-menu span:nth-child(1) {
+    top: 10px;
+}
+.hamburger-menu span:nth-child(2) {
+    top: 22px;
+}
+.hamburger-menu span:nth-child(3) {
+    top: 34px;
+}
+.hamburger-menu.active span:nth-child(1) {
+    top: 22px;
+    transform: translateX(-50%) rotate(45deg);
+}
+.hamburger-menu.active span:nth-child(2) {
+    opacity: 0;
+}
+.hamburger-menu.active span:nth-child(3) {
+    top: 22px;
+    transform: translateX(-50%) rotate(-45deg);
+}
+.off-screen-menu {
+    padding-top: calc(var(--gap) * 2);
+    background-color: var(--dark-green);
+    height: 100%;
+    width: 55%;
+    position: fixed;
+    top: 0;
+    right: -450px;
+    font-size: 3rem;
+    transition: 0.3s ease;
+}
+.off-screen-menu.active {
+    right: 0;
+}
+.off-screen-menu ul {
+    padding-left: var(--gap);
+}
+.off-screen-menu li {
+    list-style-type: none;
+}
+.off-screen-menu a {
+    font-size: 20px;
+    text-decoration: none;
+    color: var(--off-white);
 }

@@ -1,6 +1,6 @@
 <script>
     // import statements
-    import { onMount} from 'svelte';
+    import { onMount } from 'svelte';
     import * as THREE from 'three';
     import vertexShader from './shaders/vertex.glsl';
     import fragmentShader from './shaders/fragment.glsl';
@@ -12,12 +12,21 @@
     // if in south hemisphere add minus to latitude
     // if in eastern hemisphere add minus to longitude
     const coordinates = {
-        "Toronto->Vancouver" : [ [43.6771, 79.6334], [49.1934, 123.1751] ],
-        "Toronto->NewYork" : [ [43.6771, 79.6334], [40.6446, 73.7797] ],
-        "Toronto->SanFransisco" : [ [43.6771, 79.6334], [37.6193, 122.3816] ],
-    }
+        'Toronto->Vancouver': [
+            [43.6771, 79.6334],
+            [49.1934, 123.1751],
+        ],
+        'Toronto->NewYork': [
+            [43.6771, 79.6334],
+            [40.6446, 73.7797],
+        ],
+        'Toronto->SanFransisco': [
+            [43.6771, 79.6334],
+            [37.6193, 122.3816],
+        ],
+    };
 
-    // variables 
+    // variables
     let canvas;
     let isDragging = false;
     let isSpinning = false;
@@ -27,10 +36,10 @@
 
     // ---------- destination pins ----------
     function convertToCartesian(point) {
-        const R = 10; // radius of the globe
+        const R = 11.5; // radius of the globe
         return point.map(coord => {
-            const lat = coord[0] * Math.PI / 180;
-            const lng = coord[1] * Math.PI / 180;
+            const lat = (coord[0] * Math.PI) / 180;
+            const lng = (coord[1] * Math.PI) / 180;
             const x = R * Math.cos(lat) * Math.cos(lng);
             const y = R * Math.sin(lat);
             const z = R * Math.cos(lat) * Math.sin(lng);
@@ -42,9 +51,9 @@
         let v2 = new THREE.Vector3(p2[0], p2[1], p2[2]);
         let points = [];
         for (let i = 0; i <= 20; ++i) {
-            let p = new THREE.Vector3().lerpVectors(v1, v2, i/20);
+            let p = new THREE.Vector3().lerpVectors(v1, v2, i / 20);
             p.normalize();
-            p.multiplyScalar(10 + 0.4*Math.sin(Math.PI*i/20));
+            p.multiplyScalar(11.5 + 0.4 * Math.sin((Math.PI * i) / 20));
             points.push(p);
         }
         return points;
@@ -54,11 +63,11 @@
         const pinGroup = new THREE.Group();
         // create top of pin
         const ballGeometry = new THREE.SphereGeometry(0.15, 20, 20);
-        const ballMaterial = new THREE.MeshBasicMaterial({color: color});
+        const ballMaterial = new THREE.MeshBasicMaterial({ color: color });
         const ball = new THREE.Mesh(ballGeometry, ballMaterial);
         // create pointy part of pin
         const cylinderGeometry = new THREE.CylinderGeometry(0.04, 0.04, 0.7, 20);
-        const cylinderMaterial = new THREE.MeshBasicMaterial({color: 0xD0D3D4});
+        const cylinderMaterial = new THREE.MeshBasicMaterial({ color: 0xd0d3d4 });
         const cylinder = new THREE.Mesh(cylinderGeometry, cylinderMaterial);
         // move sphere ontop of cylinder
         ball.position.set(0, 0, -0.35);
@@ -132,35 +141,35 @@
         const renderer = new THREE.WebGLRenderer({
             canvas: canvas,
             antialias: true,
-            alpha: true
+            alpha: true,
         });
-        renderer.setSize(canvas.clientWidth, canvas.clientHeight);
+        renderer.setSize(window.innerWidth, window.innerHeight);
         renderer.setPixelRatio(window.devicePixelRatio);
         renderer.setClearColor(0x000000, 0);
 
         // create a sphere which will be a globe
         const sphere = new THREE.Mesh(
-            new THREE.SphereGeometry(10, 50, 50),
+            new THREE.SphereGeometry(11.5, 50, 50),
             new THREE.ShaderMaterial({
                 vertexShader: vertexShader,
                 fragmentShader: fragmentShader,
                 uniforms: {
                     globeTexture: {
-                        value: new THREE.TextureLoader().load(globeIMG)
-                    }
-                }
-            })
+                        value: new THREE.TextureLoader().load(globeIMG),
+                    },
+                },
+            }),
         );
 
         // add 'atmosphere' to the globe
         const atmosphere = new THREE.Mesh(
-            new THREE.SphereGeometry(10, 50, 50),
+            new THREE.SphereGeometry(11.5, 50, 50),
             new THREE.ShaderMaterial({
                 vertexShader: atmosphereVertexShader,
                 fragmentShader: atmosphereFragmentShader,
                 blending: THREE.AdditiveBlending,
-                side: THREE.BackSide
-            })
+                side: THREE.BackSide,
+            }),
         );
         atmosphere.scale.set(1.1, 1.1, 1.1);
 
@@ -173,7 +182,7 @@
             let cartesian = convertToCartesian(route);
             // create pins
             let startPin = createPin(0x000000);
-            let destPin = createPin(0xE74C3C);
+            let destPin = createPin(0xe74c3c);
             // position the pins relative to the globe
             startPin.position.set(cartesian[0][0], cartesian[0][1], cartesian[0][2]);
             destPin.position.set(cartesian[1][0], cartesian[1][1], cartesian[1][2]);
@@ -183,7 +192,7 @@
             let points = getCurve(cartesian[0], cartesian[1]);
             let path = new THREE.CatmullRomCurve3(points);
             const geometry = new THREE.TubeGeometry(path, 20, 0.015, 8, false);
-            const material = new THREE.MeshBasicMaterial({color: 0xFFFFFF});
+            const material = new THREE.MeshBasicMaterial({ color: 0xffffff });
             const mesh = new THREE.Mesh(geometry, material);
             // add to globe
             object.add(startPin);
@@ -221,29 +230,33 @@
 </script>
 
 <div class="globe-container">
-    <canvas 
-        bind:this={canvas} 
-        on:mousemove={onMouseMove} on:mousedown={onMouseDown} on:mouseup={onMouseUp} on:mouseleave={onMouseUp}
-        on:touchstart={onTouchStart} on:touchmove={onTouchMove} on:touchend={onTouchEnd}>
+    <canvas
+        bind:this={canvas}
+        on:mousemove={onMouseMove}
+        on:mousedown={onMouseDown}
+        on:mouseup={onMouseUp}
+        on:mouseleave={onMouseUp}
+        on:touchstart={onTouchStart}
+        on:touchmove={onTouchMove}
+        on:touchend={onTouchEnd}
+    >
     </canvas>
 </div>
-
 
 <style>
     .globe-container {
         display: flex;
         align-items: center;
         justify-content: center;
-        height: 1000px;
-        width: 1000px;
+        height: 700px;
         overflow: hidden;
         position: relative;
         margin: auto;
     }
 
     canvas {
-        height: 90%;
-        width: 90%;
+        height: 100% !important;
+        width: 100% !important;
     }
     @media (max-width: 767px) {
         .globe-container {

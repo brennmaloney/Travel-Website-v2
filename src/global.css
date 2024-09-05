@@ -39,18 +39,18 @@ p {
 }
 
 .Mobile {
-    display: none;
+    display: none !important;
 }
 .Desktop {
-    display: block;
+    display: block !important;
 }
 
 @media (max-width: 767px) {
     .Mobile {
-        display: block;
+        display: block !important;
     }
     .Desktop {
-        display: none;
+        display: none !important;
     }
 }
 @font-face {

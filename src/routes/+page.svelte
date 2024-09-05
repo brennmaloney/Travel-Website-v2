@@ -12,7 +12,16 @@
         </div>
     </div>
     <div class="globe-section">
-        <Globe />
+        <div class="about-globe Desktop">
+            <h1>Our Globe</h1>
+            <h3>All of the black pins mark where we have stared out travels, and red mark the destinations we've traveled to.</h3>
+        </div>
+        <div class="globe">
+            <Globe />
+        </div>
+        <div class="places-traveled Desktop">
+            <h1>Places We've Been</h1>
+        </div>
     </div>
     <div class="about-section">
         <Wave colour={'#adcfb3'} flip={true} />
@@ -41,8 +50,24 @@
 
     .globe-section {
         position: relative;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
         background-color: var(--mint);
         width: 100%;
+    }
+    .globe-section > .globe {
+        min-width: 70%;
+        min-height: 70%;
+    }
+    .globe-section > .about-globe,
+    .globe-section > .places-traveled {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        min-width: 15%;
+        height: 100%;
     }
 
     .about-section {

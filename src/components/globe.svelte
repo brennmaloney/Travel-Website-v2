@@ -1,4 +1,6 @@
 <script>
+    export let data;
+
     // import statements
     import { onMount } from 'svelte';
     import * as THREE from 'three';
@@ -8,23 +10,16 @@
     import atmosphereFragmentShader from './shaders/atmosphereFragment.glsl';
     import globeIMG from '../images/main/earth_test.jpg';
 
-    // add coordinates of vacations to add points to the globe (city : [latitude, longitude])
-    // if in south hemisphere add minus to latitude
-    // if in eastern hemisphere add minus to longitude
-    const coordinates = {
-        'Toronto->Vancouver': [
-            [43.6771, 79.6334],
-            [49.1934, 123.1751],
-        ],
-        'Toronto->NewYork': [
-            [43.6771, 79.6334],
-            [40.6446, 73.7797],
-        ],
-        'Toronto->SanFransisco': [
-            [43.6771, 79.6334],
-            [37.6193, 122.3816],
-        ],
-    };
+    const coordinates = data.coordinates.reduce((result, entry) => {
+        const sources = entry.sourceCoordinates.split(';').map(coord => coord.split(',').map(Number));
+        const destinations = entry.destinationCoordinates.split(';').map(coord => coord.split(',').map(Number));
+
+        for (let i = 0; i < sources.length; ++i) {
+            const key = `Trip ${i + 1}`;
+            result[key] = [sources[i], destinations[i]];
+        }
+        return result;
+    }, {});
 
     // variables
     let canvas;

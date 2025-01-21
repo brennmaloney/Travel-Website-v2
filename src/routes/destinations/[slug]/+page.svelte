@@ -1,7 +1,6 @@
 <script>
     export let data;
-    data = data.blogs;
-    console.log(data);
+    data = data.blog;
 </script>
 
 <div class="destination-page">

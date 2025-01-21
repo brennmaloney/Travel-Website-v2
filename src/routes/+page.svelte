@@ -1,6 +1,9 @@
 <script>
+    export let data;
+
     import Globe from '../components/globe.svelte';
     import Wave from '../components/wave.svelte';
+    import strings from '../../strings.js.json';
     import '../global.css';
 </script>
 
@@ -8,23 +11,23 @@
     <div class="welcome-hero">
         <div class="hero-messaging">
             <h1>Welcome</h1>
-            <Wave colour={'#adcfb3'} />
+            <Wave colour={'#a2c3a8'} />
         </div>
     </div>
     <div class="globe-section">
         <div class="about-globe Desktop">
             <h1>Our Globe</h1>
-            <h3>All of the black pins mark where we have stared out travels, and red mark the destinations we've traveled to.</h3>
+            <h3>{strings.globeDescription}</h3>
         </div>
         <div class="globe">
-            <Globe />
+            <Globe {data}/>
         </div>
         <div class="places-traveled Desktop">
             <h1>Places We've Been</h1>
         </div>
     </div>
     <div class="about-section">
-        <Wave colour={'#adcfb3'} flip={true} />
+        <Wave colour={'#a2c3a8'} flip={true} />
     </div>
 </div>
 

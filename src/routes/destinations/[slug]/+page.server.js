@@ -1,13 +1,11 @@
 import { client } from '$lib/contentful';
+import { getBlogEntries } from '../../../lib/contentful';
 
 /** @type {import('./$types').PageServerLoad} */
 export async function load({ params }) {
     const { slug } = params;
-    const response = await client.getEntries({
-        content_type: 'blogPage',
-        'fields.slug': slug,
-    });
+    const response = await getBlogEntries(slug);
     return {
-        blogs: response.items[0].fields,
+        blog: response[0],
     };
 }

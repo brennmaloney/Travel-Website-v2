@@ -8,11 +8,9 @@
 </script>
 
 <div class="destination-section">
-    <div class="welcome-hero">
-        <div class="hero-messaging">
-            <h1>Welcome</h1>
-            <Wave colour={'#a2c3a8'} />
-        </div>
+    <div class="welcome-hero Center">
+        <h1 class="hero-title">Come Follow Our Travels</h1>
+        <Wave colour={'#a2c3a8'} />
     </div>
     <div class="globe-section">
         <div class="about-globe Desktop">
@@ -42,13 +40,26 @@
     .welcome-hero {
         position: relative;
         background-color: var(--light-yellow);
-        height: 85vh;
+        height: 75vh;
         width: 100%;
+        background-image: url(../images/travel/bc/bc_joffre_first.JPEG);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
     }
-    .hero-messaging {
-        display: flex;
-        justify-content: center;
-        align-items: center;
+    .hero-title {
+        color: white;
+        font-family: var(--title-font);
+        font-size: 8rem;
+        padding-bottom: 0.5em;
+        text-shadow: 1px 1px 4px black;
+        text-align: center;
+    }
+    @media (max-width: 767px) {
+        .hero-title {
+            font-size: 3rem;
+            margin: 0.25em;
+        }
     }
 
     .globe-section {

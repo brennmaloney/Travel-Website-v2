@@ -2,8 +2,10 @@
     --gap: 24px;
     --regular-font: 'NotoSansRegular';
     --bold-font: 'NotoSansBold';
+    --title-font: 'KnewaveRegular';
     --dark-green: #4b6043;
     --off-white: #eae7dd;
+    --black: #000000;
     --white: #ffffff;
     --dark-grey: #202020;
     --light-yellow: #f2e7c2;
@@ -38,6 +40,15 @@ p {
     margin: 0;
 }
 
+.Uppercase {
+    text-transform: uppercase;
+}
+.Center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .Mobile {
     display: none !important;
 }
@@ -64,6 +75,10 @@ p {
 @font-face {
     font-family: 'AssistantRegular';
     src: url(./fonts/Assistant-Regular.ttf);
+}
+@font-face {
+    font-family: 'KnewaveRegular';
+    src: url(./fonts/Knewave-Regular.ttf);
 }
 
 @media (max-width: 767px) {

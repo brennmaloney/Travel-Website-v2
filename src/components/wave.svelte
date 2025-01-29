@@ -27,11 +27,11 @@
         z-index: 1;
     }
     .normal {
-        bottom: -7px;
+        bottom: -8px;
         right: 0;
     }
     .flipped {
-        top: -7px;
+        top: -8px;
         left: 0;
     }
 </style>

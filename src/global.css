@@ -1,7 +1,7 @@
 :root {
     --gap: 24px;
-    --regular-font: 'NotoSansRegular';
-    --bold-font: 'NotoSansBold';
+    --regular-font: 'AtmaRegular';
+    --bold-font: 'AtmaBold';
     --title-font: 'KnewaveRegular';
     --dark-green: #4b6043;
     --off-white: #eae7dd;
@@ -10,6 +10,7 @@
     --dark-grey: #202020;
     --light-yellow: #f2e7c2;
     --mint: #a2c3a8;
+    --logo-beige: #f2edda;
 }
 
 body {
@@ -17,7 +18,7 @@ body {
     padding: 0;
     height: 100%;
     min-height: 100vh;
-    background-color: var(--off-white);
+    background-color: var(--logo-beige);
 }
 
 * {
@@ -27,16 +28,16 @@ body {
 
 h1 {
     font-family: var(--bold-font);
-    font-size: 1.7rem;
+    font-size: 2.25rem;
     margin: 0;
 }
 h2 {
     font-family: var(--bold-font);
-    font-size: 1.2rem;
+    font-size: 1.75rem;
     margin: 0;
 }
 p {
-    font-size: 1rem;
+    font-size: 1.125rem;
     margin: 0;
 }
 
@@ -79,6 +80,14 @@ p {
 @font-face {
     font-family: 'KnewaveRegular';
     src: url(./fonts/Knewave-Regular.ttf);
+}
+@font-face {
+    font-family: 'AtmaRegular';
+    src: url(./fonts/Atma-Regular.ttf);
+}
+@font-face {
+    font-family: 'AtmaBold';
+    src: url(./fonts/Atma-Bold.ttf);
 }
 
 @media (max-width: 767px) {

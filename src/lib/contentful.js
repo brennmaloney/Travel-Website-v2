@@ -30,3 +30,16 @@ export async function getCoordinateEntries() {
         return [];
     }
 }
+
+export async function getImageCarousel() {
+    try {
+        const response = await client.getEntries({
+            content_type: 'imageCarousel',
+        });
+        console.log('hi')
+        return response.items.map(item => item.fields);
+    } catch (error) {
+        console.error('Error fetching coordinates:', error);
+        return [];
+    }
+}

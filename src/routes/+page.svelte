@@ -1,32 +1,36 @@
 <script>
     export let data;
+    console.log(data);
 
     import Globe from '../components/globe.svelte';
     import Wave from '../components/wave.svelte';
+    import Carousel from '../components/carousel.svelte';
     import strings from '../../strings.js.json';
     import '../global.css';
+
+    const colour = '#a3c3a8';
 </script>
 
 <div class="destination-section">
     <div class="welcome-hero Center">
         <h1 class="hero-title">Come Follow Our Travels</h1>
-        <Wave colour={'#a2c3a8'} />
+        <Wave {colour} />
     </div>
-    <div class="globe-section">
-        <div class="about-globe Desktop">
+    <div class="globe-section Center">
+        <div class="about-globe">
             <h1>Our Globe</h1>
             <h3>{strings.globeDescription}</h3>
         </div>
         <div class="globe">
             <Globe {data}/>
         </div>
-        <div class="places-traveled Desktop">
-            <h1>Places We've Been</h1>
-        </div>
     </div>
     <div class="about-section">
-        <Wave colour={'#a2c3a8'} flip={true} />
+        <Wave {colour} flip={true} />
     </div>
+    <divc class="Center">
+        <Carousel {data}/>
+    </divc>
 </div>
 
 <style>
@@ -34,13 +38,12 @@
         display: flex;
         flex-direction: column;
         justify-content: center;
-        align-items: center;
         overflow: hidden;
     }
     .welcome-hero {
         position: relative;
         background-color: var(--light-yellow);
-        height: 75vh;
+        height: 85vh;
         width: 100%;
         background-image: url(../images/travel/bc/bc_joffre_first.JPEG);
         background-repeat: no-repeat;
@@ -63,25 +66,9 @@
     }
 
     .globe-section {
-        position: relative;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        background-color: var(--mint);
-        width: 100%;
-    }
-    .globe-section > .globe {
-        min-width: 70%;
-        min-height: 70%;
-    }
-    .globe-section > .about-globe,
-    .globe-section > .places-traveled {
-        display: flex;
         flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        min-width: 15%;
-        height: 100%;
+        text-align: center;
+        background-color: var(--mint);
     }
 
     .about-section {

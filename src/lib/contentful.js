@@ -35,8 +35,8 @@ export async function getImageCarousel() {
     try {
         const response = await client.getEntries({
             content_type: 'imageCarousel',
+            'fields.title': 'Places We\'ve Been'
         });
-        console.log('hi')
         return response.items.map(item => item.fields);
     } catch (error) {
         console.error('Error fetching coordinates:', error);

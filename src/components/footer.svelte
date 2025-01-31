@@ -9,6 +9,7 @@
         display: flex;
         align-items: center;
         height: 10vh;
+        margin-top: 2em;
         background-color: var(--dark-green);
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }

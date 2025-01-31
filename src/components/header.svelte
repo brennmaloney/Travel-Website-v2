@@ -1,5 +1,5 @@
 <script>
-    import { onMount } from 'svelte';
+    import { onMount, onDestroy } from 'svelte';
     import '../global.css';
     import tLogo1 from '../images/main/logo.png';
     import { page } from '$app/stores';
@@ -77,11 +77,9 @@
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
 
-    .mobile-logo img {
-        width: 9em;
-    }
+    .mobile-logo img,
     .desktop-logo img {
-        width: 10em;
+        width: 11em;
     }
     .mobile-logo {
         margin-left: var(--gap);

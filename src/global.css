@@ -1,5 +1,6 @@
 :root {
     --gap: 24px;
+    --width: 1800px;
     --regular-font: 'AtmaRegular';
     --bold-font: 'AtmaBold';
     --title-font: 'KnewaveRegular';
@@ -21,17 +22,24 @@ body {
     background-color: var(--logo-beige);
 }
 
+body > * {
+    box-sizing: border-box;
+    max-width: 100vw;
+    padding-left: max(calc(((100vw - var(--width)) / 2)), var(--gap)) !important;
+    padding-right: max(calc(((100vw - var(--width)) / 2)), var(--gap)) !important;
+}
+
 * {
     font-family: var(--regular-font);
     letter-spacing: 1px;
 }
 
-h1 {
+h1, .h1 {
     font-family: var(--bold-font);
     font-size: 2.25rem;
     margin: 0;
 }
-h2 {
+h2, .h2 {
     font-family: var(--bold-font);
     font-size: 1.75rem;
     margin: 0;
@@ -41,6 +49,29 @@ p {
     margin: 0;
 }
 
+
+.Link {
+    position: relative;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+.Link::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 0.1em;
+    background-color: var(--black);
+    transform: scaleX(0);
+    transform-origin: bottom right;
+    transition: transform 0.3s ease;
+}
+.Link:hover::after {
+    transform: scaleX(1); /* Grow the underline to full width */
+    transform-origin: bottom left; /* Changes the line's origin on hover */
+}
+
 .Uppercase {
     text-transform: uppercase;
 }
@@ -48,6 +79,15 @@ p {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+.Wave {
+    position: relative;
+    height: 30vh;
+    width: 100%;
+}
+.Text {
+    text-decoration: none;
+    color: var(--black);
 }
 
 .Mobile {

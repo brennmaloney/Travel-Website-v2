@@ -1,6 +1,5 @@
 <script>
     export let data;
-    console.log(data);
 
     import Globe from '../components/globe.svelte';
     import Wave from '../components/wave.svelte';
@@ -25,12 +24,23 @@
             <Globe {data}/>
         </div>
     </div>
-    <div class="about-section">
+    <div class="Wave">
         <Wave {colour} flip={true} />
     </div>
-    <divc class="Center">
+    <div class="Center">
         <Carousel {data}/>
-    </divc>
+    </div>
+    <div class="Wave">
+        <Wave {colour} secondary={true} />
+    </div>
+    <div class="globe-section Center">
+        <div class="">
+            <a class="h1 Link Text" href="/destinations">See Where We Have Traveled</a>
+        </div>
+    </div>
+    <div class="Wave">
+        <Wave {colour} flip={true} secondary={true} />
+    </div>
 </div>
 
 <style>
@@ -69,11 +79,5 @@
         flex-direction: column;
         text-align: center;
         background-color: var(--mint);
-    }
-
-    .about-section {
-        position: relative;
-        height: 30vh;
-        width: 100%;
     }
 </style>

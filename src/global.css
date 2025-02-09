@@ -88,11 +88,11 @@ p {
     position: relative;
     height: 20vh;
     width: 100%;
+    padding-top: 8em;
 }
-@media (max-width: 767px) {
-    .Wave {
-        height: 100px;
-    }
+.Flip {
+    padding-top: 0;
+    padding-bottom: 8em;
 }
 .Text {
     text-decoration: none;
@@ -110,6 +110,13 @@ p {
 }
 
 @media (max-width: 767px) {
+    .Wave {
+        height: 100px;
+        padding-top: 0;
+    }
+    .Flip {
+        padding-bottom: 0;
+    }
     .Mobile {
         display: block !important;
     }

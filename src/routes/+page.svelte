@@ -22,7 +22,7 @@
         </div>
         <Globe {data}/>
     </div>
-    <div class="Wave">
+    <div class="Wave Flip">
         <Wave {colour} flip={true} />
     </div>
     <div class="Center Container">
@@ -36,7 +36,7 @@
             <a class="h1 Link Text" href="/destinations">Click To See Where We Have Traveled</a>
         </div>
     </div>
-    <div class="Wave">
+    <div class="Wave Flip">
         <Wave {colour} flip={true} secondary={true} />
     </div>
 </div>

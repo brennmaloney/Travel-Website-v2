@@ -31,11 +31,11 @@ export async function getCoordinateEntries() {
     }
 }
 
-export async function getImageCarousel() {
+export async function getImageCarousel(title) {
     try {
         const response = await client.getEntries({
             content_type: 'imageCarousel',
-            'fields.title': 'Places We\'ve Been'
+            'fields.title': title
         });
         return response.items.map(item => item.fields);
     } catch (error) {

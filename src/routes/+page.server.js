@@ -4,6 +4,6 @@ import { getCoordinateEntries, getImageCarousel } from '$lib/contentful';
 export async function load() {
     return {
         coordinates: await getCoordinateEntries(),
-        images: await getImageCarousel()
+        images: await getImageCarousel('Places We\'ve Been')
     }
 }

@@ -15,7 +15,7 @@
         <h1 class="hero-title">Come Follow Our Travels</h1>
         <Wave {colour} />
     </div>
-    <div class="globe-section Center">
+    <div class="globe-section Center Container">
         <div class="about-globe">
             <h1>Our Globe</h1>
             <h3>{strings.globeDescription}</h3>
@@ -25,15 +25,15 @@
     <div class="Wave">
         <Wave {colour} flip={true} />
     </div>
-    <div class="Center">
+    <div class="Center Container">
         <Carousel {data}/>
     </div>
     <div class="Wave">
         <Wave {colour} secondary={true} />
     </div>
     <div class="globe-section Center">
-        <div class="">
-            <a class="h1 Link Text" href="/destinations">See Where We Have Traveled</a>
+        <div class="Container">
+            <a class="h1 Link Text" href="/destinations">Click To See Where We Have Traveled</a>
         </div>
     </div>
     <div class="Wave">

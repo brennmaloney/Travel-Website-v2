@@ -33,6 +33,10 @@ body > * {
     font-family: var(--regular-font);
     letter-spacing: 1px;
 }
+*:focus {
+    outline: none;
+}
+
 
 h1, .h1 {
     font-family: var(--bold-font);
@@ -93,6 +97,9 @@ p {
 .Text {
     text-decoration: none;
     color: var(--black);
+}
+.Container {
+    padding: 1em;
 }
 
 .Mobile {

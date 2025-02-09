@@ -212,7 +212,7 @@
         function animate() {
             requestAnimationFrame(animate);
             renderer.render(scene, camera);
-            object.rotation.y += 0.001;
+            isDragging ? 0 : object.rotation.y += 0.001;
             if (isDragging) {
                 const deltaX = mouse.x - previousMouse.x;
                 const deltaY = mouse.y - previousMouse.y;

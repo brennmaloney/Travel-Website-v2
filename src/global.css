@@ -82,8 +82,13 @@ p {
 }
 .Wave {
     position: relative;
-    height: 30vh;
+    height: 20vh;
     width: 100%;
+}
+@media (max-width: 767px) {
+    .Wave {
+        height: 100px;
+    }
 }
 .Text {
     text-decoration: none;

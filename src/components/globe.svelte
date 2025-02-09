@@ -22,7 +22,7 @@
     }, {});
 
     // variables
-    let canvas;
+    let canvas, renderer, camera;
     let isDragging = false;
     let isSpinning = false;
     const mouse = { x: undefined, y: undefined };
@@ -127,13 +127,22 @@
     }
     // -------------------------------------------
 
+
+    function resizeCanvas() {
+        if (!canvas || !renderer || !camera) {
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            camera.aspect = width / height;
+            camera.updateProjectionMatrix();
+        }
+    }
+
     onMount(() => {
-        let is_mobile = window.innerWidth <= 767;
         // create a scene and camera for globe
         const scene = new THREE.Scene();
-        const camera = new THREE.PerspectiveCamera(75, canvas.clientWidth / canvas.clientHeight, 0.1, 1000);
+        camera = new THREE.PerspectiveCamera(75, canvas.clientWidth / canvas.clientHeight, 0.1, 1000);
+        camera.position.z = 20;
 
-        const renderer = new THREE.WebGLRenderer({
+        renderer = new THREE.WebGLRenderer({
             canvas: canvas,
             antialias: true,
             alpha: true,
@@ -141,6 +150,8 @@
         renderer.setSize(window.innerWidth, window.innerHeight);
         renderer.setPixelRatio(window.devicePixelRatio);
         renderer.setClearColor(0x000000, 0);
+
+        window.addEventListener('resize', resizeCanvas);
 
         // create a sphere which will be a globe
         const sphere = new THREE.Mesh(
@@ -196,7 +207,6 @@
         });
 
         scene.add(object);
-        camera.position.z = is_mobile ? 20 : 20;
 
         // animate the scene
         function animate() {
@@ -224,7 +234,6 @@
     });
 </script>
 
-<div class="globe-container">
     <canvas
         bind:this={canvas}
         on:mousemove={onMouseMove}
@@ -236,30 +245,15 @@
         on:touchend={onTouchEnd}
     >
     </canvas>
-</div>
 
 <style>
-    .globe-container {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        height: 700px;
-        overflow: hidden;
-        position: relative;
-        margin: auto;
-    }
-
     canvas {
-        height: 100% !important;
-        width: 100% !important;
+        height: 800px !important;
+        width: 800px !important;
     }
     @media (max-width: 767px) {
-        .globe-container {
-            height: 400px;
-            width: 400px;
-        }
         canvas {
-            height: 400px;
+            height: 400px !important;
         }
     }
 </style>

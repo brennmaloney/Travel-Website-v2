@@ -20,9 +20,7 @@
             <h1>Our Globe</h1>
             <h3>{strings.globeDescription}</h3>
         </div>
-        <div class="globe">
-            <Globe {data}/>
-        </div>
+        <Globe {data}/>
     </div>
     <div class="Wave">
         <Wave {colour} flip={true} />

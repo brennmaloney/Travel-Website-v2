@@ -4,7 +4,7 @@
 
 <div class="footer-section Container">
     <h2 class="footer-name">Brennan Maloney 2025</h2>
-    <div class="footer-icons">
+    <div class="footer-icons Center">
         <a href="https://www.linkedin.com/in/brennanmaloney/" class="Text"><i class="fa-brands fa-linkedin"></i></a>
         <a href="https://github.com/brennmaloney" class="Text"><i class="fa-brands fa-square-github"></i></a>
         <a href="https://x.com/_brennanmaloney" class="Text"><i class="fa-brands fa-square-x-twitter"></i></a>
@@ -26,13 +26,11 @@
         background-color: var(--dark-green);
         color: var(--off-white);
     }
-    .footer-section > div {
-        flex-direction: column;
-    }
     .footer-name {
         grid-column: 1/2;
     }
     .footer-icons {
+        gap: 1em;
         font-size: 3rem;
         grid-column: 1/2;
     }
@@ -57,6 +55,9 @@
     @media (max-width: 767px) {
         .footer-section {
             padding: 1em;
+        }
+        .footer-icons {
+            gap: 0.25em;
         }
     }
 </style>

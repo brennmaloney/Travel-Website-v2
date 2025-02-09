@@ -66,16 +66,24 @@
         text-shadow: 1px 1px 4px black;
         text-align: center;
     }
-    @media (max-width: 767px) {
-        .hero-title {
-            font-size: 3rem;
-            margin: 0.25em;
-        }
-    }
 
     .globe-section {
         flex-direction: column;
         text-align: center;
         background-color: var(--mint);
+    }
+    .globe-section a {
+        font-family: var(--title-font);
+        font-size: 3.5rem;
+    }
+
+    @media (max-width: 767px) {
+        .hero-title {
+            font-size: 3rem;
+            margin: 0.25em;
+        }
+        .globe-section a {
+            font-size: 2rem;
+        }
     }
 </style>

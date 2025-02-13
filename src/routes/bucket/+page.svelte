@@ -11,5 +11,6 @@
     .bucketlist-section {
         display: flex;
         justify-content: center;
+        min-height: 75vh;
     }
 </style>

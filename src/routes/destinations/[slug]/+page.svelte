@@ -3,22 +3,17 @@
     data = data.blog;
 </script>
 
-<div class="destination-page">
-    <h1>{data.title}</h1>
-    {#if data.teaserImage}
+<h1 class="Center">{data.title}</h1>
+
+{#if data.teaserImage}
+    <div class="Center">
         <img class="destination-image" src={data.teaserImage.fields.file.url} alt={data.teaserImage.fields.title} />
-    {/if}
-    <p class="">{data.teaserDescription}</p>
-</div>
+    </div>
+{/if}
+
+<p class="Center">{data.teaserDescription}</p>
 
 <style>
-    .destination-page {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        padding: 1rem 2rem;
-    }
     .destination-image {
         width: 70%;
     }

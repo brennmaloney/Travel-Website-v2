@@ -251,7 +251,7 @@
         height: 800px !important;
         width: 800px !important;
     }
-    @media (max-width: 767px) {
+    @media (max-width: 800px) {
         canvas {
             height: 400px !important;
         }

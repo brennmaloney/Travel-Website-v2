@@ -23,7 +23,7 @@
 
 <style>
     .destination-section {
-        padding: 1rem 2rem;
+        min-height: 75vh;
     }
     .destination-list {
         display: grid;

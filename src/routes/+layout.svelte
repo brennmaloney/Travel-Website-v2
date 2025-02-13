@@ -12,22 +12,9 @@
 </svelte:head>
 
 
-<div class="page-container">
-    <Header />
-    <div class="content">
-        <slot></slot>
-    </div>
-    <Footer />
-</div>
+<Header />
 
+<slot></slot>
 
-<style>
-    .page-container {
-        display: flex;
-        flex-direction: column;
-        min-height: 100vh;
-    }
-    .content {
-        flex: 1;
-    }
-</style>
+<Footer />
+

@@ -28,9 +28,6 @@ body > div > * {
 body > div > *:not(header, footer) > * {
     margin: var(--gap) 0;
 }
-body > div > *:not(header, footer) > *:first-child {
-    margin: 0 0 var(--gap);
-}
 @media screen and (min-width: 1600px) {
     body > div > * {
         padding: 0 max(calc(((100vw - var(--width)) / 2)), var(--gap)) !important;

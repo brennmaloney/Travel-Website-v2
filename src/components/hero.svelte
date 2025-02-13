@@ -8,9 +8,12 @@
 
 <style>
     hgroup {
+        display: flex;
+        align-items: center;
         background-repeat: no-repeat;
         background-size: cover;
         background-position: center;
+        min-height: 75vh;
     }
     hgroup > h1 {
         color: var(--white);

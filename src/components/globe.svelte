@@ -254,6 +254,7 @@
     @media (max-width: 800px) {
         canvas {
             height: 400px !important;
+            width: 400px !important;
         }
     }
 </style>
